@@ -4,6 +4,7 @@ from content.API_content import *
 from content.TEXT_content import *
 from WORK_commands.weather_command import weather_info
 from WORK_commands.feedBack_command import feedback
+from WORK_commands.user_command import *
 
 # конфиг бота
 bot = Bot(API_bot)
@@ -28,6 +29,12 @@ async def start_main_func(message: types.Message):
         await feedback(message, bot)
     elif 'ифи погода' in message.text.lower():
         await weather_info(message)
+    elif 'ифи кинь кости' in message.text.lower():
+        await play_dice(message)
+
+
+
+
 
 
 if __name__ == '__main__':
