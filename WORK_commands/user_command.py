@@ -1,8 +1,8 @@
 """ПОЛЬЗОВАТЕЛЬСКТЕ КОМАНДЫ"""
-from aiogram import *
+from aiogram import types
 import random
 
 
 # кости игральные
-async def play_dice(message: types.Message):
-    await bot.send_dice(chat_id=message.chat.id)
+async def play_dice(message: types.Message, bot):
+    await bot.send_dice(message.chat.id)

@@ -30,11 +30,7 @@ async def start_main_func(message: types.Message):
     elif 'ифи погода' in message.text.lower():
         await weather_info(message)
     elif 'ифи ролл' in message.text.lower():
-        await play_dice(message)
-
-
-
-
+        await play_dice(message, bot)
 
 
 if __name__ == '__main__':
