@@ -2,8 +2,9 @@
 from aiogram import Bot, Dispatcher, executor, types
 from content.API_content import *
 from content.TEXT_content import *
-# from WORK_commands import weather_command
+from WORK_commands.weather_command import weather_info
 from WORK_commands.feedBack_command import feedback
+from WORK_commands.user_command import *
 
 # конфиг бота
 bot = Bot(API_bot)
@@ -21,10 +22,19 @@ async def start_bot(message: types.Message):
     await message.answer(text_start)
 
 
-# старт функции обратной связи
+# старт главных функций
 @dp.message_handler(content_types=types.ContentTypes.TEXT)
-async def start_feedback(message: types.Message):
-    await feedback(message, bot)
+async def start_main_func(message: types.Message):
+    if 'ифи ошибка' in message.text.lower():
+        await feedback(message, bot)
+    elif 'ифи погода' in message.text.lower():
+        await weather_info(message)
+    elif 'ифи кинь кости' in message.text.lower():
+        await play_dice(message)
+
+
+
+
 
 
 if __name__ == '__main__':
