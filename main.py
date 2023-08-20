@@ -2,7 +2,7 @@
 from aiogram import Bot, Dispatcher, executor, types
 from content.API_content import *
 from content.TEXT_content import *
-from WORK_commands.weather_command import weather_info
+from WORK_commands.weather_command import weather_info, weather_info_forecast
 from WORK_commands.feedBack_command import feedback
 from WORK_commands.user_command import *
 
@@ -25,14 +25,30 @@ async def start_bot(message: types.Message):
 # старт главных функций
 @dp.message_handler(content_types=types.ContentTypes.TEXT)
 async def start_main_func(message: types.Message):
-    if 'ифи ошибка' in message.text.lower():
-        await feedback(message, bot)
-    elif 'ифи погода' in message.text.lower():
-        await weather_info(message)
-    elif 'ифи ролл' in message.text.lower():
-        await play_dice(message, bot)
-    elif 'ифи команды' in message.text.lower():
-        await command_help(message, bot)
+    text = message.text.lower().split()
+    if text[0] == 'ифи':
+        if text[1] == 'ошибка:':
+            print(1)
+            await feedback(message, bot)
+        elif text[1] == 'погода':
+            if text[2] == 'завтра':
+                print(3)
+                await weather_info_forecast(message)
+            elif text[2] == 'фулл':
+                print(4)
+                await message.reply('ПОДОЖДИ А, БУДЕТ ТЕБЕ ФУЛЛ ПОГОДА')
+            else:
+                print(5)
+                await weather_info(message)
+        elif text[1] == 'прогноз':
+            print(6)
+            await message.reply('ПОДОЖДИ А, БУДЕТ ТЕБЕ ПРОГНОЗ')
+        elif text[1] == 'ролл':
+            print(7)
+            await play_dice(message, bot)
+        elif text[1] == 'команды':
+            print(8)
+            await command_help(message, bot)
 
 
 if __name__ == '__main__':
