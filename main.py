@@ -5,6 +5,7 @@ from content.TEXT_content import *
 from WORK_commands.weather_command import weather_info, weather_info_forecast
 from WORK_commands.feedBack_command import feedback
 from WORK_commands.user_command import *
+from WORK_commands.translate_command import translate_command
 
 # конфиг бота
 bot = Bot(API_bot)
@@ -49,6 +50,9 @@ async def start_main_func(message: types.Message):
         elif text[1] == 'команды':
             print(8)
             await command_help(message, bot)
+        elif text[1] == 'переведи' and text[2] == 'на':
+            print(9)
+            await translate_command(message)
 
 
 if __name__ == '__main__':
