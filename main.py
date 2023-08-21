@@ -6,6 +6,7 @@ from WORK_commands.weather_command import weather_ordinary, weather_full, weathe
 from WORK_commands.feedBack_command import feedback
 from WORK_commands.user_command import *
 from WORK_commands.translate_command import translate_command
+from WORK_commands.wiki_command import *
 
 # конфиг бота
 bot = Bot(API_bot)
@@ -53,6 +54,9 @@ async def start_main_func(message: types.Message):
         elif text[1] == 'переведи' and text[2] == 'на':
             print(9)
             await translate_command(message)
+        elif text[1] == 'вики':
+            print(10)
+            await wiki_command(message)
 
 
 if __name__ == '__main__':
