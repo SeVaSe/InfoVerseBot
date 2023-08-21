@@ -44,6 +44,32 @@ class TestMainFuncBot(unittest.TestCase):
 
         self.bot.send_message.assert_called_once()
 
+    async def test_feedback(self):
+        message = MagicMock()
+        message.text.lower.return_value = 'ифи ошибка: плохо работает переводчик'
+
+        loop = asyncio.get_event_loop()
+        asyncio.run_coroutine_threadsafe(start_main_func(message), loop)
+
+        self.bot.send_message.assert_called_once()
+
+    async def test_help(self):
+        message = MagicMock()
+        message.text.lower.return_value = 'ифи команды'
+
+        loop = asyncio.get_event_loop()
+        asyncio.run_coroutine_threadsafe(start_main_func(message), loop)
+
+        self.bot.send_message.assert_called_once()
+
+    async def test_play_dice(self):
+        message = MagicMock()
+        message.text.lower.return_value = 'ифи ролл'
+
+        loop = asyncio.get_event_loop()
+        asyncio.run_coroutine_threadsafe(start_main_func(message), loop)
+
+        self.bot.send_message.assert_called_once()
 
 if __name__ == '__main__':
     unittest.main()
