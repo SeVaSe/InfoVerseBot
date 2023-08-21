@@ -7,6 +7,7 @@ from WORK_commands.feedBack_command import feedback
 from WORK_commands.user_command import *
 from WORK_commands.translate_command import translate_command
 from WORK_commands.wiki_command import *
+from WORK_commands.converter_command import command_converter
 
 # конфиг бота
 bot = Bot(API_bot)
@@ -57,7 +58,9 @@ async def start_main_func(message: types.Message):
         elif text[1] == 'вики':
             print(10)
             await wiki_command(message)
-
+        elif text[1] == 'конвертер':
+            print(11)
+            await command_converter(message)
 
 if __name__ == '__main__':
     executor.start_polling(dp, on_startup=on_start)
