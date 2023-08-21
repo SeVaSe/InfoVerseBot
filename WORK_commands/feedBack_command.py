@@ -1,8 +1,6 @@
 from aiogram import types
 from content.TEXT_content import text_wrong_input
-
-# ID группы админов
-admin_group_id = -1001657428568
+from content.API_content import admin_group_id
 
 
 # функция обратной связи

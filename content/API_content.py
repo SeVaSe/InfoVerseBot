@@ -6,3 +6,5 @@ API_translate = ''  # API - переводчик
 API_weather = 'd93c8221518f6af6c0f85a38610df4a7'  # API - погоды
 API_wiki = ''  # API - вики
 API_converter = '20ea5abb01049fb975c40914f5c55c17'
+# ID группы админов
+admin_group_id = -1001657428568

@@ -10,5 +10,5 @@ async def play_dice(message: types.Message, bot):
 
 
 # функция "ифи команды"
-async def command_help(message: types.Message, bot):
+async def command_help(message: types.Message):
     await message.reply(text_help)
