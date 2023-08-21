@@ -51,7 +51,7 @@ async def start_main_func(message: types.Message):
             await play_dice(message, bot)
         elif text[1] == 'команды':
             print(8)
-            await command_help(message, bot)
+            await command_help(message)
         elif text[1] == 'перевод':
             print(9)
             await translate_command(message)
