@@ -17,23 +17,32 @@ async def translate_command(message: types.Message):
     # если язык есть в списке доступных языков
     if detected_lang in languages:
 
-        if words[3] == 'немецкий:':
+        if words[2] == 'нем:':
 
             translator = Translator(from_lang=detected_lang, to_lang='de')
             translation = translator.translate(text_to_translate)
-            await message.reply(f' Перевод: {translation} \n [{text_translate}]')
+            if detected_lang == 'en':
+                await message.reply(f'🇬🇧/🇩🇪 Перевод: {translation}')
+            elif detected_lang == 'ru':
+                await message.reply(f'🇷🇺/🇩🇪 Перевод: {translation}')
 
-        elif words[3] == 'английский:':
+        elif words[2] == 'англ:':
 
             translator = Translator(from_lang=detected_lang, to_lang='en')
             translation = translator.translate(text_to_translate)
-            await message.reply(f' Перевод: {translation} \n [{text_translate}]')
+            if detected_lang == 'de':
+                await message.reply(f'🇩🇪/🇬🇧 Перевод: {translation}')
+            elif detected_lang == 'ru':
+                await message.reply(f'🇷🇺/🇬🇧 Перевод: {translation}')
 
-        elif words[3] == 'русский:':
+        elif words[2] == 'рус:':
 
             translator = Translator(from_lang=detected_lang, to_lang='ru')
             translation = translator.translate(text_to_translate)
-            await message.reply(f' Перевод: {translation} \n [{text_translate}]')
+            if detected_lang == 'en':
+                await message.reply(f'🇬🇧/🇷🇺 Перевод: {translation}')
+            elif detected_lang == 'de':
+                await message.reply(f'🇩🇪/🇷🇺 Перевод: {translation}')
 
     else:
         await message.reply(text_wrong_lang)

@@ -52,7 +52,7 @@ async def start_main_func(message: types.Message):
         elif text[1] == 'команды':
             print(8)
             await command_help(message, bot)
-        elif text[1] == 'переведи' and text[2] == 'на':
+        elif text[1] == 'перевод':
             print(9)
             await translate_command(message)
         elif text[1] == 'вики':
